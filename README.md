@@ -1,4 +1,4 @@
-# Spyder-Plot
+# Spider-Plot
 Function for radial distributed data visualization in MATLAB
 
 Also available at https://es.mathworks.com/matlabcentral/fileexchange/75176-spyder-plot
