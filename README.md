@@ -1,5 +1,5 @@
 # Spyder-Plot
-Custom function for radial distributed sound data visualization in MATLAB
+Function for radial distributed data visualization in MATLAB
 
 Moving beyond mean values, the function allows a better data understanding by plotting:
 - Center tendency (mean or median) with a colormap 
