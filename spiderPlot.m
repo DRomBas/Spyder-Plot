@@ -1,5 +1,5 @@
-function spyderPlot(Data,varargin)
-% function spyderPlot(Data,param)
+function spiderPlot(Data,varargin)
+% function spiderPlot(Data,param)
 % -------------------------
 % Data: matrix with N (observations)x M (angles)
 % param: (optional) structure with parameters for plotting configuration
