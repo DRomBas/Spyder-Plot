@@ -5,7 +5,7 @@ Also available at https://es.mathworks.com/matlabcentral/fileexchange/75176-spid
 
 Moving beyond mean values, this function allows for a better data understanding by plotting:
 - Central tendency (mean or median) enhanced by a colormap 
-- Dispersion (Interval define by chosen percentiles)
+- Dispersion (Interval defined by percentiles)
 - Raw data points 
 
 ![Image description](example.png)
