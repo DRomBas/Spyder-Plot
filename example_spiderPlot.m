@@ -13,4 +13,5 @@ subplot(122);
 param.plotDots = false;
 param.superior = 90;
 param.inferior = 10;
+param.angleLabels = arrayfun(@char,64 + (1:20),'UniformOutput', false);
 spiderPlot(Data,param)

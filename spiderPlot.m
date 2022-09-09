@@ -1,4 +1,4 @@
-function spiderPlot(Data,varargin)
+function spiderPlot(Data, varargin)
 % function spiderPlot(Data,param)
 % -------------------------
 % Data: matrix with N (observations)x M (angles)
@@ -9,10 +9,12 @@ function spiderPlot(Data,varargin)
 % -- circleRadius: radius of the radar outer circle. Change to hide
 % outliers
 % -- plotDots: flag to overlay raw data points or not 
+% -- angleLabels: numeric or cell array containing labels for each angle
 %--------------------------
-% David Romero 24/04/2020
-
-
+% David Romero-Bascones 24/04/2020 (@drombas)
+% 
+% Modifications:
+% - 09/09/2022: added labels to each angle
 
 % Set default params
 center = 'mean';
@@ -24,6 +26,7 @@ gridWidth = 0.3;
 nPoints = 50;
 nRing = 3;
 jitter = 0.04;
+labels = [];
 
 ColorBackground = 'none'; 
 ColorGridBack = [220 220 220]./255;
@@ -33,7 +36,7 @@ ColorFill= [239 92 84]./255;
 
 % Check input parameters
 if nargin == 0
-    error('SpyderPlot requires at least 1 input');
+    error('SpiderPlot requires at least 1 input');
 elseif nargin > 2
     error('Number of input parameters exceeded');
 elseif nargin ==2 
@@ -53,6 +56,12 @@ elseif nargin ==2
     end
     if isfield(param,'plotDots')
         plotDots = param.plotDots;
+    end
+    if isfield(param,'angleLabels')
+        labels = param.angleLabels;
+        if isnumeric(labels)
+            labels = arrayfun(@num2str, labels, 'UniformOutput', false);
+        end
     end
 end
 
@@ -132,5 +141,13 @@ if plotDots
         [Xp,Yp] = pol2cart(theta(n)+jitter*randn(1,size(Data,1)),Data(:,n)');
         scatter(Xp,Yp,5,'r','filled','MarkerFaceAlpha',0.3);
     end
+end
+
+if ~isempty(labels)
+   [Xg, Yg] = pol2cart(theta, 2 + rhoMax*ones(1,nAngle));
+   for n=1:nAngle
+       text(Xg(n), Yg(n), labels{n}, 'Color', ColorGrid, ...
+           'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle'); 
+   end
 end
 
